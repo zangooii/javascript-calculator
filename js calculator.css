@@ -1,0 +1,5 @@
+.num_button, .func_button, .oth_button {
+    border-style: outset;
+    display: inline-block;
+    width: 33%;
+}
