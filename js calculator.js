@@ -27,6 +27,10 @@ let input = document.getElementById("input");
 
 let lastChar = "";
 let funcLastChar = "";
+let splitString = "";
+let reverseArray = "";
+let joinArray = "";
+let joinArraybefor = "";
 
 const changeInput = (array, index) => {
   let mybutton = array[index].button;
@@ -70,7 +74,28 @@ const changeInput = (array, index) => {
       input.value = input.value.slice(0, input.value.length - 1);
     }
 
+    splitString = input.value.split("");
+    reverseArray = splitString.reverse();
+    joinArray = reverseArray.join("");
+    joinArraybefor = joinArray.replace(".", "");
 
+    if (
+      ((joinArray.indexOf(".") < joinArray.indexOf("+") ||
+        joinArray.indexOf(".") < joinArray.indexOf("-") ||
+        joinArray.indexOf(".") < joinArray.indexOf("*") ||
+        joinArray.indexOf(".") < joinArray.indexOf("/")) &&
+        (joinArraybefor.indexOf(".") < joinArraybefor.indexOf("+") ||
+          joinArraybefor.indexOf(".") < joinArraybefor.indexOf("-") ||
+          joinArraybefor.indexOf(".") < joinArraybefor.indexOf("*") ||
+          joinArraybefor.indexOf(".") < joinArraybefor.indexOf("/"))) ||
+      (joinArraybefor.indexOf("+") == -1 &&
+        joinArraybefor.indexOf("/") == -1 &&
+        joinArraybefor.indexOf("*") == -1 &&
+        joinArraybefor.indexOf("-") == -1 &&
+        joinArraybefor.indexOf(".") != -1)
+    ) {
+      input.value = input.value.slice(0, input.value.length - 1);
+    }
   };
 };
 
