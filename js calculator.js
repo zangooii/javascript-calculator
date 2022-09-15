@@ -24,6 +24,7 @@ ArrayMaker(othButtonArray, "oth_button");
 numButtonArray = numButtonArray.reverse();
 
 let input = document.getElementById("input");
+let container = document.getElementById("first-value");
 
 let lastChar = "";
 let funcLastChar = "";
@@ -31,6 +32,10 @@ let splitString = "";
 let reverseArray = "";
 let joinArray = "";
 let joinArraybefor = "";
+let firstValue = "";
+let secondValue = "";
+let lastSign = "";
+let beforLastSign = "";
 
 const changeInput = (array, index) => {
   let mybutton = array[index].button;
@@ -79,25 +84,40 @@ const changeInput = (array, index) => {
     joinArray = reverseArray.join("");
     joinArraybefor = joinArray.replace(".", "");
 
-    if (
-      ((joinArray.indexOf(".") < joinArray.indexOf("+") ||
-        joinArray.indexOf(".") < joinArray.indexOf("-") ||
-        joinArray.indexOf(".") < joinArray.indexOf("*") ||
-        joinArray.indexOf(".") < joinArray.indexOf("/")) &&
-        (joinArraybefor.indexOf(".") < joinArraybefor.indexOf("+") ||
-          joinArraybefor.indexOf(".") < joinArraybefor.indexOf("-") ||
-          joinArraybefor.indexOf(".") < joinArraybefor.indexOf("*") ||
-          joinArraybefor.indexOf(".") < joinArraybefor.indexOf("/"))) ||
-      (joinArraybefor.indexOf("+") == -1 &&
-        joinArraybefor.indexOf("/") == -1 &&
-        joinArraybefor.indexOf("*") == -1 &&
-        joinArraybefor.indexOf("-") == -1 &&
-        joinArraybefor.indexOf(".") != -1)
-    ) {
-      input.value = input.value.slice(0, input.value.length - 1);
+    if (funcLastChar == "." && joinArraybefor.indexOf(".") != -1) {
+      if (
+        ((joinArray.indexOf(".") < joinArray.indexOf("+") ||
+          joinArray.indexOf(".") < joinArray.indexOf("-") ||
+          joinArray.indexOf(".") < joinArray.indexOf("*") ||
+          joinArray.indexOf(".") < joinArray.indexOf("/")) &&
+          (joinArraybefor.indexOf(".") < joinArraybefor.indexOf("+") ||
+            joinArraybefor.indexOf(".") < joinArraybefor.indexOf("-") ||
+            joinArraybefor.indexOf(".") < joinArraybefor.indexOf("*") ||
+            joinArraybefor.indexOf(".") < joinArraybefor.indexOf("/"))) ||
+        (joinArraybefor.indexOf("+") == -1 &&
+          joinArraybefor.indexOf("/") == -1 &&
+          joinArraybefor.indexOf("*") == -1 &&
+          joinArraybefor.indexOf("-") == -1)
+      ) {
+        input.value = input.value.slice(0, input.value.length - 1);
+      }
     }
   };
 };
+
+plusFunc = () => {
+  if (firstValue == "") {
+    firstValue = parseFloat(input.value);
+    secondValue = firstValue;
+  } else {
+    firstValue = parseFloat(input.value);
+    secondValue = secondValue + firstValue;
+  }
+  input.value = "";
+  container.innerHTML = secondValue;
+};
+
+funcButtonArray[0].button.onclick = plusFunc;
 
 changeInput(numButtonArray, 0);
 changeInput(numButtonArray, 1);
@@ -109,10 +129,5 @@ changeInput(numButtonArray, 6);
 changeInput(numButtonArray, 7);
 changeInput(numButtonArray, 8);
 changeInput(numButtonArray, 9);
-
-changeInput(funcButtonArray, 0);
-changeInput(funcButtonArray, 1);
-changeInput(funcButtonArray, 2);
-changeInput(funcButtonArray, 3);
 
 changeInput(othButtonArray, 0);
