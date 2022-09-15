@@ -28,78 +28,23 @@ let container = document.getElementById("first-value");
 
 let lastChar = "";
 let funcLastChar = "";
-let splitString = "";
-let reverseArray = "";
-let joinArray = "";
-let joinArraybefor = "";
 let firstValue = "";
 let secondValue = "";
 let lastSign = "";
-let beforLastSign = "";
-
+let editedValue = "";
 const changeInput = (array, index) => {
   let mybutton = array[index].button;
   mybutton.onclick = () => {
-    input.value = input.value + array[index].value;
-    beforLastChar = input.value.slice(-3, -2);
-    lastChar = input.value.slice(-2, -1);
     funcLastChar = array[index].value;
+    input.innerHTML = input.innerHTML + array[index].value;
+    lastChar = input.innerHTML.slice(-2, -1);
 
-    if (
-      funcLastChar == "." &&
-      (lastChar == "-" ||
-        lastChar == "/" ||
-        lastChar == "+" ||
-        lastChar == "*" ||
-        lastChar == "")
-    ) {
-      input.value = input.value.slice(0, input.value.length - 1);
-      input.value = input.value + "0";
-      input.value = input.value + ".";
-    }
-
-    if (
-      (lastChar == "." ||
-        lastChar == "-" ||
-        lastChar == "/" ||
-        lastChar == "+" ||
-        lastChar == "*") &&
-      (funcLastChar == "+" || funcLastChar == "/" || funcLastChar == "*")
-    ) {
-      input.value = input.value.slice(0, input.value.length - 1);
-      input.value = input.value.slice(0, input.value.length - 1);
-      input.value = input.value + array[index].value;
-    }
-
-    if (
-      (lastChar == "" || lastChar == "-") &&
-      beforLastChar == "" &&
-      (funcLastChar == "+" || funcLastChar == "/" || funcLastChar == "*")
-    ) {
-      input.value = input.value.slice(0, input.value.length - 1);
-    }
-
-    splitString = input.value.split("");
-    reverseArray = splitString.reverse();
-    joinArray = reverseArray.join("");
-    joinArraybefor = joinArray.replace(".", "");
-
-    if (funcLastChar == "." && joinArraybefor.indexOf(".") != -1) {
-      if (
-        ((joinArray.indexOf(".") < joinArray.indexOf("+") ||
-          joinArray.indexOf(".") < joinArray.indexOf("-") ||
-          joinArray.indexOf(".") < joinArray.indexOf("*") ||
-          joinArray.indexOf(".") < joinArray.indexOf("/")) &&
-          (joinArraybefor.indexOf(".") < joinArraybefor.indexOf("+") ||
-            joinArraybefor.indexOf(".") < joinArraybefor.indexOf("-") ||
-            joinArraybefor.indexOf(".") < joinArraybefor.indexOf("*") ||
-            joinArraybefor.indexOf(".") < joinArraybefor.indexOf("/"))) ||
-        (joinArraybefor.indexOf("+") == -1 &&
-          joinArraybefor.indexOf("/") == -1 &&
-          joinArraybefor.indexOf("*") == -1 &&
-          joinArraybefor.indexOf("-") == -1)
-      ) {
-        input.value = input.value.slice(0, input.value.length - 1);
+    if (funcLastChar == ".") {
+      deleted = input.innerHTML.replace(".", "");
+      if (deleted.indexOf(".") != -1) {
+        secondDeleted = [...input.innerHTML].reverse().join("");
+        secondDeleted = secondDeleted.replace(".", "");
+        input.innerHTML = [...secondDeleted].reverse().join("");
       }
     }
   };
@@ -107,15 +52,15 @@ const changeInput = (array, index) => {
 
 optFucn = (array, index) => {
   array[index].button.onclick = function () {
-    if (input.value != "") {
+    if (input.innerHTML != "") {
       if (firstValue == "") {
-        firstValue = parseFloat(input.value);
+        firstValue = parseFloat(input.innerHTML);
         secondValue = firstValue;
       } else {
-        firstValue = parseFloat(input.value);
+        firstValue = parseFloat(input.innerHTML);
         lastOptFunc();
       }
-      input.value = "";
+      input.innerHTML = "";
       container.innerHTML = secondValue;
       lastSign = array[index].value;
     }
