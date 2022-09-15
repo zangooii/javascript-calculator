@@ -105,19 +105,39 @@ const changeInput = (array, index) => {
   };
 };
 
-plusFunc = () => {
-  if (firstValue == "") {
-    firstValue = parseFloat(input.value);
-    secondValue = firstValue;
-  } else {
-    firstValue = parseFloat(input.value);
-    secondValue = secondValue + firstValue;
-  }
-  input.value = "";
-  container.innerHTML = secondValue;
+optFucn = (array, index) => {
+  array[index].button.onclick = function () {
+    if (input.value != "") {
+      if (firstValue == "") {
+        firstValue = parseFloat(input.value);
+        secondValue = firstValue;
+      } else {
+        firstValue = parseFloat(input.value);
+        lastOptFunc();
+      }
+      input.value = "";
+      container.innerHTML = secondValue;
+      lastSign = array[index].value;
+    }
+  };
 };
 
-funcButtonArray[0].button.onclick = plusFunc;
+lastOptFunc = () => {
+  if (lastSign == "+") {
+    secondValue = secondValue + firstValue;
+  } else if (lastSign == "-") {
+    secondValue = secondValue - firstValue;
+  } else if (lastSign == "/") {
+    secondValue = secondValue / firstValue;
+  } else if (lastSign == "*") {
+    secondValue = secondValue * firstValue;
+  }
+};
+
+optFucn(funcButtonArray, 0);
+optFucn(funcButtonArray, 1);
+optFucn(funcButtonArray, 2);
+optFucn(funcButtonArray, 3);
 
 changeInput(numButtonArray, 0);
 changeInput(numButtonArray, 1);
