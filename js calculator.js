@@ -25,6 +25,7 @@ numButtonArray = numButtonArray.reverse();
 
 let input = document.getElementById("input");
 let container = document.getElementById("first-value");
+let signPlace = document.getElementById("sign-place");
 
 let lastChar = "";
 let funcLastChar = "";
@@ -63,6 +64,9 @@ optFucn = (array, index) => {
       input.innerHTML = "";
       container.innerHTML = secondValue;
       lastSign = array[index].value;
+      signPlace.innerHTML = lastSign
+    } else if (input.innerHTML == "" && array[index].value == "-") {
+      input.innerHTML = "-";
     }
   };
 };
@@ -77,6 +81,23 @@ lastOptFunc = () => {
   } else if (lastSign == "*") {
     secondValue = secondValue * firstValue;
   }
+};
+
+funcButtonArray[4].button.onclick = () => {
+  firstValue = parseFloat(input.innerHTML);
+  if (lastSign == "+") {
+    secondValue = secondValue + firstValue;
+  } else if (lastSign == "-") {
+    secondValue = secondValue - firstValue;
+  } else if (lastSign == "/") {
+    secondValue = secondValue / firstValue;
+  } else if (lastSign == "*") {
+    secondValue = secondValue * firstValue;
+  }
+  input.innerHTML = secondValue;
+  container.innerHTML = "";
+  lastSign = "=";
+  signPlace.innerHTML = lastSign
 };
 
 optFucn(funcButtonArray, 0);
