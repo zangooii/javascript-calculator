@@ -1,12 +1,64 @@
-.num_button, .func_button, .oth_button {
-    border-style: outset;
-    display: inline-block;
-    width: 33%;
+.num_button,
+.func_button,
+.oth_button {
+  display: block;
+  width: 100%;
+  height: 72px;
+}
+
+#divide {
+  display: block;
+}
+
+#equal {
+  display: block;
+  width: 100%;
+  height: 288px;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+}
+
+#sign-place{
+width: 20px;
+border: 1px solid;
+display: block;
+height: 25px;
+}
+
+#first-value,
+#input {
+  border: 1px solid;
+  width: 100px;
+  display: block;
+  height: 25px;
+}
+
+.global {
+  display: flex;
+  justify-content: center;
+}
+
+.columns {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+.column3,
+.column2,
+.column1,
+.column4 {
+  width: 100%;
+  float: left;
+  padding: 0px;
 }
 #input {
-    color: blue
+  color: blue;
 }
 
 #first-value {
-    color:brown
+  color: brown;
 }

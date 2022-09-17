@@ -64,7 +64,7 @@ optFucn = (array, index) => {
       input.innerHTML = "";
       container.innerHTML = secondValue;
       lastSign = array[index].value;
-      signPlace.innerHTML = lastSign
+      signPlace.innerHTML = lastSign;
     } else if (input.innerHTML == "" && array[index].value == "-") {
       input.innerHTML = "-";
     }
@@ -83,21 +83,35 @@ lastOptFunc = () => {
   }
 };
 
-funcButtonArray[4].button.onclick = () => {
-  firstValue = parseFloat(input.innerHTML);
-  if (lastSign == "+") {
-    secondValue = secondValue + firstValue;
-  } else if (lastSign == "-") {
-    secondValue = secondValue - firstValue;
-  } else if (lastSign == "/") {
-    secondValue = secondValue / firstValue;
-  } else if (lastSign == "*") {
-    secondValue = secondValue * firstValue;
+equal = document.getElementById("equal");
+
+equal.onclick = () => {
+  if (input.innerHTML == "" || container.innerHTML == "") {
+  } else {
+    firstValue = parseFloat(input.innerHTML);
+    if (lastSign == "+") {
+      secondValue = secondValue + firstValue;
+    } else if (lastSign == "-") {
+      secondValue = secondValue - firstValue;
+    } else if (lastSign == "/") {
+      secondValue = secondValue / firstValue;
+    } else if (lastSign == "*") {
+      secondValue = secondValue * firstValue;
+    }
+    input.innerHTML = secondValue;
+    container.innerHTML = "";
+    lastSign = "=";
+    signPlace.innerHTML = lastSign;
   }
-  input.innerHTML = secondValue;
+};
+
+othButtonArray[1].button.onclick = () => {
+  input.innerHTML = "";
   container.innerHTML = "";
-  lastSign = "=";
-  signPlace.innerHTML = lastSign
+  signPlace.innerHTML = "";
+  firstValue = "";
+  secondValue = "";
+  lastSign = "";
 };
 
 optFucn(funcButtonArray, 0);

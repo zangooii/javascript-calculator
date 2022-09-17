@@ -8,32 +8,40 @@
   </head>
   <body>
     <link rel="stylesheet" href="js calculator.css" />
-    <p id="first-value"></p>
-    <p id="sign-place"></p>
-    <p id="input"></p>
-    <div>
-      <div id="oprations">
-        <div class="func_button" id="plus">+</div>
-        <div class="func_button" id="minus">-</div>
-        <div class="func_button" id="multiple">*</div>
-        <div class="func_button" id="divide">/</div>
-        <div class="func_button" id="equal">=</div>
+    <div class="inputs">
+      <div>
+        <div id="first-value"></div>
+        <div id="sign-place"></div>
+        <div id="input"></div>
       </div>
-      <div id="numbers">
-        <div class="num_button" id="nine">9</div>
-        <div class="num_button" id="eight">8</div>
-        <div class="num_button" id="seven">7</div>
-        <div class="num_button" id="six">6</div>
-        <div class="num_button" id="five">5</div>
-        <div class="num_button" id="four">4</div>
-        <div class="num_button" id="three">3</div>
-        <div class="num_button" id="two">2</div>
-        <div class="num_button" id="one">1</div>
-        <div class="num_button" id="zero">0</div>
-      </div>
-      <div id="others">
-        <div class="oth_button" id="dot">.</div>
-        <div class="oth_button" id="clear">C</div>
+    </div>
+    <div class="global">
+      <div class="columns">
+        <div class="column3">
+          <button class="func_button" id="multiple">*</button>
+          <button class="num_button" id="seven">7</button>
+          <button class="num_button" id="four">4</button>
+          <button class="num_button" id="one">1</button>
+          <button class="oth_button" id="dot">.</button>
+        </div>
+        <div class="column2">
+          <button class="func_button" id="minus">-</button>
+          <button class="num_button" id="eight">8</button>
+          <button class="num_button" id="five">5</button>
+          <button class="num_button" id="two">2</button>
+          <button class="num_button" id="zero">0</button>
+        </div>
+        <div class="column1">
+          <button class="func_button" id="plus">+</button>
+          <button class="num_button" id="nine">9</button>
+          <button class="num_button" id="six">6</button>
+          <button class="num_button" id="three">3</button>
+          <button class="oth_button" id="clear">C</button>
+        </div>
+        <div class="column4">
+          <button class="func_button" id="divide">/</button>
+          <button id="equal">=</button>
+        </div>
       </div>
     </div>
     <script src="js calculator.js"></script>
